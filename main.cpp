@@ -1,9 +1,6 @@
 #include <windows.h>
 #include <stdio.h>
 #include <string>
-#include <iostream>
-#include <io.h>
-#include <fcntl.h> 
 using namespace std;
 
 #include <gdiplus.h>
