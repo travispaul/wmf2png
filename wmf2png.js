@@ -40,7 +40,7 @@ function saveInputBufferToTmpFile (context, next) {
     fs.writeFile(context.tmpInputFile, context.inputBuffer, next);
 }
 
-function spawnWmf2PngExe (context, next) {
+function execWmf2PngExe (context, next) {
     execFile("wmf2png.exe", [context.tmpInputFile, context.tmpOutputFile], next);
 }
 
@@ -65,7 +65,7 @@ module.exports = function wmf2png (input, callback) {
             createTmpInputFile,
             createTmpOutputFile,
             saveInputBufferToTmpFile,
-            spawnWmf2PngExe,
+            execWmf2PngExe,
             readTmpOutputFileIntoBuffer,
             unlinkTmpInputFile,
             unlinkTmpOutputFile
