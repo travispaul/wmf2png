@@ -1,7 +1,7 @@
 {
   "name": "wmf2png",
   "version": "1.0.0",
-  "description": "Convert a Windows Metafile (WMF) to a PNG. Edit",
+  "description": "Convert a Windows Metafile (WMF) to a PNG.",
   "main": "wmf2png.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
