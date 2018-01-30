@@ -13,6 +13,7 @@
 const
     fs = require("fs"),
     tmp = require("tmp"),
+    { join } = require("path"),
     { pipeline } = require("vasync"),
     { execFile } = require("child_process");
 
@@ -41,7 +42,7 @@ function saveInputBufferToTmpFile (context, next) {
 }
 
 function execWmf2PngExe (context, next) {
-    execFile("wmf2png.exe", [context.tmpInputFile, context.tmpOutputFile], next);
+    execFile(join(__dirname, "wmf2png.exe"), [context.tmpInputFile, context.tmpOutputFile], next);
 }
 
 function readTmpOutputFileIntoBuffer (context, next) {
@@ -57,6 +58,9 @@ function unlinkTmpOutputFile (context, next) {
 }
 
 module.exports = function wmf2png (input, callback) {
+    if (process.platform !== "win32") {
+        return callback(new Error("WMF conversion only works on the win32 platform"));
+    }
     let result = pipeline({
         arg: {
             inputBuffer: input
