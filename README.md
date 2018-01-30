@@ -23,3 +23,22 @@ If you're familiar with Visual Studio then you probably don't **NEED** [CMake](h
 > cmake ..
 > wmf2png.sln
 ```
+
+## You can also use it with Node.js
+
+This only works on Windows but is useful if you need to perform the conversion in Node.js (exporting from a database, etc):
+
+```
+const
+    {readFileSync, writeFileSync} = require("fs"),
+    wmf2png = require("./wmf2png"),
+    input = readFileSync("./somefile.wmf");
+
+wmf2png(input, (error, output) => {
+    if (error) {
+        throw error;
+    }
+    // output is a buffer with the PNG image data...
+    writeFileSync("./sig.png", output);
+});
+```
