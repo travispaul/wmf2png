@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Convert a Windows Metafile (WMF) to a PNG.",
   "main": "wmf2png.js",
-  "os": ["win32"]
+  "os": ["win32"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
